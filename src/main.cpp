@@ -70,6 +70,9 @@ launch:
 				case sf::Keyboard::Right:
 					snakeDirection = Direction::RIGHT;
 					break;
+				case sf::Keyboard::Space:
+					goto launch;
+					break;
 				default:
 					break;
 				}
@@ -127,10 +130,13 @@ launch:
 			}
 		}
 		displayCase.setFillColor(sf::Color::Red);
-		for(Case part : body){
-			displayCase.setPosition((CASE_SIDE + BORDER_WIDTH) * part.x, (CASE_SIDE + BORDER_WIDTH) * part.y);
+		for(size_t i = 1;i < body.size();i++){
+			displayCase.setPosition((CASE_SIDE + BORDER_WIDTH) * body[i].x, (CASE_SIDE + BORDER_WIDTH) * body[i].y);
 			app.draw(displayCase);
 		}
+		displayCase.setPosition((CASE_SIDE + BORDER_WIDTH) * body[0].x, (CASE_SIDE + BORDER_WIDTH) * body[0].y);
+		displayCase.setFillColor(sf::Color::Blue);
+		app.draw(displayCase);
 		displayCase.setPosition(apple.x * (CASE_SIDE + BORDER_WIDTH), apple.y * (CASE_SIDE + BORDER_WIDTH));
 		displayCase.setFillColor(sf::Color::Green);
 		app.draw(displayCase);
