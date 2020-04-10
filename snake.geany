@@ -20,13 +20,25 @@ indent_mode=2
 [project]
 name=snake
 base_path=/home/aymanrs/projects/snake/
+description=
+file_patterns=
 
 [long line marker]
 long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=-1
+current_page=0
+FILE_NAME_0=622;C++;0;EUTF-8;1;1;0;%2Fhome%2Faymanrs%2Fprojects%2Fsnake%2Fsrc%2Fmain.cpp;0;4
+FILE_NAME_1=544;Make;0;EUTF-8;1;1;0;%2Fhome%2Faymanrs%2Fprojects%2Fsnake%2FMakefile;0;4
 
 [VTE]
-last_dir=/home/aymanrs/gameoflife
+last_dir=/home/aymanrs/projects/snake
+
+[build-menu]
+EX_00_LB=_Execute
+EX_00_CM="./bin/Snake"
+EX_00_WD=%p
+EX_01_LB=
+EX_01_CM=
+EX_01_WD=
