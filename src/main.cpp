@@ -29,6 +29,7 @@ bool operator ==(Case a, Case b) { return a.x == b.x && a.y == b.y; }
 int main(){
 	sf::RenderWindow app;
 	app.create(sf::VideoMode(COLUMNS * (CASE_SIDE + BORDER_WIDTH), ROWS * (CASE_SIDE + BORDER_WIDTH)), "Snake");
+launch:
 	Direction snakeDirection = Direction::UP;
 	std::vector<Case> body(1, Case{COLUMNS / 2, ROWS / 2});
 	std::mt19937 rng(time(NULL));
@@ -109,8 +110,14 @@ int main(){
 			break;
 		}
 		if(body[0].x < 0 || body[0].x >= COLUMNS || body[0].y < 0 || body[0].y >= ROWS || std::find(body.begin() + 1, body.end(), body[0]) != body.end()){
-			app.close();
-			return 0;
+			while(true){
+				if(app.waitEvent(event)){
+					if(event.type == sf::Event::Closed){
+						app.close();
+						return 0;
+					} else if(event.type == sf::Event::KeyPressed && event.key.code == sf::Keyboard::Space) goto launch;
+				}
+			}
 		}
 		displayCase.setFillColor(sf::Color::White);
 		for(int i = 0;i < COLUMNS;i++){
